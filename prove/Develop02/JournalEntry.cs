@@ -1,3 +1,5 @@
+using System;
+
 class JournalEntry
 {
     public string _date;
@@ -6,21 +8,36 @@ class JournalEntry
 
     public void DisplayJournalEntry()
     {
-        Console.WriteLine($"{_date}, {_prompt}");
+        Console.WriteLine();
+        Console.WriteLine(_date);
+        Console.WriteLine(_prompt);
         Console.WriteLine(_response);
     }
 
     public void CreateJournalEntry()
     {
-        string [] prompts =
+        string[] prompts =
         {
             "How was your day?",
-            "Talk about someone you met."
+            "Talk about someone you met.",
+            "What was the best part of your day?",
+            "What are you thankful for?",
+            "What did you learn today?",
+            "What goal did you work on today?"
         };
+
+        Random random = new Random();
+        int number = random.Next(prompts.Length);
         _date = DateTime.Now.ToString();
-        _prompt = "How was your day?";
-        Console.Write($"{_prompt}: ");
+        _prompt = prompts[number];
+
+        Console.WriteLine(_prompt);
+        Console.Write("Response: ");
         _response = Console.ReadLine();
     }
 
+    public string GetFileLine()
+    {
+        return _date + "|" + _prompt + "|" + _response;
+    }
 }

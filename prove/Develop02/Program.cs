@@ -1,36 +1,34 @@
 using System;
-using System.Runtime.InteropServices;
 
 class Program
 {
     static void Main(string[] args)
     {
         Menu myMenu = new Menu();
-
         Journal myJournal = new Journal();
-    
-
         int response = 0;
-
-        while(response != 5)
+        while (response != 5)
         {
             response = myMenu.ProcessMenu();
-            switch(response)
+            if (response == 1)
             {
-                case 1:
-                    myJournal.CreateJournalEntry();
-                    break;
-                case 2:
-                    myJournal.DisplayJournal();
-                    break;
-                case 3:
-                    Console.WriteLine("Save");
-                    // Call ReadFromFile()
-                    break;
-                case 4:
-                    Console.WriteLine("Write");
-                    // Call WriteToFile()
-                    break;
+                myJournal.CreateJournalEntry();
+            }
+            else if (response == 2)
+            {
+                myJournal.DisplayJournal();
+            }
+            else if (response == 3)
+            {
+                myJournal.SaveToFile();
+            }
+            else if (response == 4)
+            {
+                myJournal.LoadFromFile();
+            }
+            else if (response == 5)
+            {
+                Console.WriteLine("Goodbye!");
             }
         }
     }
