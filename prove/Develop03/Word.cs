@@ -1,8 +1,9 @@
+using System;
+
 class Word
 {
     private string _word;
     private bool _hidden;
-
     public Word(string word)
     {
         _word = word;
@@ -22,22 +23,24 @@ class Word
     public string GetWordString()
     {
         string returnString = "";
-        if(_hidden)
+
+        if (_hidden)
         {
-            for(int i = 0; i < _word.Length; i++)
+            for (int i = 0; i < _word.Length; i++)
             {
-                returnString += '_';
+                returnString += "_";
             }
         }
         else
         {
             returnString = _word;
         }
+
         return returnString;
     }
 
     public void Display()
     {
-        Console.Write($"{GetWordString()}");
+        Console.Write(GetWordString());
     }
 }
